@@ -24,6 +24,9 @@ enum Encode: string
         };
     }
 
+    /**
+     * @return int
+     */
     public function size(): int
     {
         return match ($this) {
