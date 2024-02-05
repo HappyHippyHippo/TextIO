@@ -1,6 +1,6 @@
 <?php
 
-namespace Happyhippyhippo\TextIO;
+namespace HappyHippyHippo\TextIO;
 
 enum Encode: string
 {

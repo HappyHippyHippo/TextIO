@@ -1,13 +1,13 @@
 <?php
 
-namespace Happyhippyhippo\TextIO\tests\Exception;
+namespace HappyHippyHippo\TextIO\tests\Exception;
 
 use Exception;
-use Happyhippyhippo\TextIO\Exception\FileNotReadableException;
+use HappyHippyHippo\TextIO\Exception\FileNotReadableException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversDefaultClass \Happyhippyhippo\TextIO\Exception\FileNotReadableException
+ * @coversDefaultClass \HappyHippyHippo\TextIO\Exception\FileNotReadableException
  */
 class FileNotReadableExceptionTest extends TestCase
 {
