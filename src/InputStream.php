@@ -3,12 +3,12 @@
 namespace HappyHippyHippo\TextIO;
 
 use Generator;
-use HappyHippyHippo\TextIO\Exception\Exception;
 use HappyHippyHippo\TextIO\Exception\FileNotFoundException;
 use HappyHippyHippo\TextIO\Exception\FileNotReadableException;
 use HappyHippyHippo\TextIO\Exception\FileOpenException;
+use HappyHippyHippo\TextIO\Exception\FileReadException;
 
-class InputStream
+class InputStream implements InputStreamInterface
 {
     /** @var resource */
     protected $handler;
@@ -21,7 +21,23 @@ class InputStream
 
     /**
      * @param string $file
-     * @throws Exception
+     * @return InputStream
+     * @throws FileNotFoundException
+     * @throws FileNotReadableException
+     * @throws FileOpenException
+     * @throws FileReadException
+     */
+    public static function make(string $file): InputStreamInterface
+    {
+        return new self($file);
+    }
+
+    /**
+     * @param string $file
+     * @throws FileNotFoundException
+     * @throws FileNotReadableException
+     * @throws FileOpenException
+     * @throws FileReadException
      */
     public function __construct(protected string $file)
     {
@@ -31,7 +47,6 @@ class InputStream
         if (!is_readable($file)) {
             throw new FileNotReadableException($file);
         }
-
         $handler = fopen($file, 'rb');
         if ($handler === false) {
             throw new FileOpenException($file);
@@ -54,39 +69,9 @@ class InputStream
     }
 
     /**
-     * @param int $quantity
-     * @return string
-     */
-    public function peak(int $quantity = 1): string
-    {
-        $this->buffer($quantity);
-        return substr($this->buffer, 0, $quantity);
-    }
-
-    /**
-     * @param int $quantity
-     * @return string
-     */
-    public function readBytes(int $quantity = 1): string
-    {
-        $this->buffer($quantity);
-        $data = substr($this->buffer, 0, $quantity);
-        $this->buffer = substr($this->buffer, $quantity);
-        return $data;
-    }
-
-    /**
-     * @param int $quantity
-     */
-    public function purge(int $quantity = 1): void
-    {
-        $this->buffer($quantity);
-        $this->buffer = substr($this->buffer, $quantity);
-    }
-
-    /**
      * @param Encode $target
      * @return Generator
+     * @throws FileReadException
      */
     public function lines(Encode $target = Encode::UTF8): Generator
     {
@@ -112,7 +97,32 @@ class InputStream
     }
 
     /**
+     * @param int $quantity
+     * @return string
+     * @throws FileReadException
+     */
+    protected function peak(int $quantity = 1): string
+    {
+        $this->buffer($quantity);
+        return substr($this->buffer, 0, $quantity);
+    }
+
+    /**
+     * @param int $quantity
+     * @return string
+     * @throws FileReadException
+     */
+    protected function readBytes(int $quantity = 1): string
+    {
+        $this->buffer($quantity);
+        $data = substr($this->buffer, 0, $quantity);
+        $this->buffer = substr($this->buffer, $quantity);
+        return $data;
+    }
+
+    /**
      * @return Encode
+     * @throws FileReadException
      */
     protected function readBOM(): Encode
     {
@@ -142,13 +152,28 @@ class InputStream
 
     /**
      * @param int $quantity
+     * @throws FileReadException
+     */
+    protected function purge(int $quantity = 1): void
+    {
+        $this->buffer($quantity);
+        $this->buffer = substr($this->buffer, $quantity);
+    }
+
+    /**
+     * @param int $quantity
      * @return int
+     * @throws FileReadException
      */
     protected function buffer(int $quantity = 1): int
     {
         $size = strlen($this->buffer);
         if ($size < $quantity) {
-            $this->buffer .= stream_get_contents($this->handler, $quantity - $size);
+            $result = fread($this->handler, max(0, $quantity - $size));
+            if ($result === false) {
+                throw new FileReadException();
+            }
+            $this->buffer .= $result;
         }
         return strlen($this->buffer);
     }
