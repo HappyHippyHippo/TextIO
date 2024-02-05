@@ -59,14 +59,14 @@ class OutputStream implements OutputStreamInterface
 
     /**
      * @param string $data
-     * @param Encode $encode
+     * @param Encode $source
      * @return $this
      * @throws FileWriteException
      */
-    public function write(string $data, Encode $encode = Encode::UTF8): OutputStreamInterface
+    public function write(string $data, Encode $source = Encode::UTF8): OutputStreamInterface
     {
-        if ($encode !== $this->encoding) {
-            $data = $this->encoding->convert($data, $encode);
+        if ($this->encoding !== $source) {
+            $data = $this->encoding->convert($data, $source);
         }
         return $this->writeData($data);
     }

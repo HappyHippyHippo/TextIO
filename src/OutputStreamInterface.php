@@ -13,9 +13,9 @@ interface OutputStreamInterface
 
     /**
      * @param string $data
-     * @param Encode $encode
+     * @param Encode $source
      * @return $this
      * @throws FileWriteException
      */
-    public function write(string $data, Encode $encode = Encode::UTF8): OutputStreamInterface;
+    public function write(string $data, Encode $source = Encode::UTF8): OutputStreamInterface;
 }
