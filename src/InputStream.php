@@ -1,12 +1,12 @@
 <?php
 
-namespace Happyhippyhippo\TextIO;
+namespace HappyHippyHippo\TextIO;
 
 use Generator;
-use Happyhippyhippo\TextIO\Exception\Exception;
-use Happyhippyhippo\TextIO\Exception\FileNotFoundException;
-use Happyhippyhippo\TextIO\Exception\FileNotReadableException;
-use Happyhippyhippo\TextIO\Exception\FileOpenException;
+use HappyHippyHippo\TextIO\Exception\Exception;
+use HappyHippyHippo\TextIO\Exception\FileNotFoundException;
+use HappyHippyHippo\TextIO\Exception\FileNotReadableException;
+use HappyHippyHippo\TextIO\Exception\FileOpenException;
 
 class InputStream
 {

@@ -1,19 +1,19 @@
 <?php
 
-namespace Happyhippyhippo\TextIO\tests;
+namespace HappyHippyHippo\TextIO\tests;
 
-use Happyhippyhippo\TextIO\Encode;
-use Happyhippyhippo\TextIO\Exception\Exception;
-use Happyhippyhippo\TextIO\Exception\FileNotFoundException;
-use Happyhippyhippo\TextIO\Exception\FileNotReadableException;
-use Happyhippyhippo\TextIO\InputStream;
+use HappyHippyHippo\TextIO\Encode;
+use HappyHippyHippo\TextIO\Exception\Exception;
+use HappyHippyHippo\TextIO\Exception\FileNotFoundException;
+use HappyHippyHippo\TextIO\Exception\FileNotReadableException;
+use HappyHippyHippo\TextIO\InputStream;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamFile;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversDefaultClass \Happyhippyhippo\TextIO\InputStream
+ * @coversDefaultClass \HappyHippyHippo\TextIO\InputStream
  */
 class InputStreamTest extends TestCase
 {

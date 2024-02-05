@@ -5,8 +5,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Happyhippyhippo\\TextIO\\": "src/",
-            "Happyhippyhippo\\TextIO\\tests\\": "test/"
+            "HappyHippyHippo\\TextIO\\": "src/",
+            "HappyHippyHippo\\TextIO\\tests\\": "test/"
         }
     },
     "authors": [

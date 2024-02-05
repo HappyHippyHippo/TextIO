@@ -1,13 +1,13 @@
 <?php
 
-namespace Happyhippyhippo\TextIO\tests\Exception;
+namespace HappyHippyHippo\TextIO\tests\Exception;
 
 use Exception;
-use Happyhippyhippo\TextIO\Exception\FileOpenException;
+use HappyHippyHippo\TextIO\Exception\FileOpenException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversDefaultClass \Happyhippyhippo\TextIO\Exception\FileOpenException
+ * @coversDefaultClass \HappyHippyHippo\TextIO\Exception\FileOpenException
  */
 class FileOpenExceptionTest extends TestCase
 {

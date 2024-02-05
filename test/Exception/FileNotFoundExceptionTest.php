@@ -1,13 +1,13 @@
 <?php
 
-namespace Happyhippyhippo\TextIO\tests\Exception;
+namespace HappyHippyHippo\TextIO\tests\Exception;
 
 use Exception;
-use Happyhippyhippo\TextIO\Exception\FileNotFoundException;
+use HappyHippyHippo\TextIO\Exception\FileNotFoundException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversDefaultClass \Happyhippyhippo\TextIO\Exception\FileNotFoundException
+ * @coversDefaultClass \HappyHippyHippo\TextIO\Exception\FileNotFoundException
  */
 class FileNotFoundExceptionTest extends TestCase
 {

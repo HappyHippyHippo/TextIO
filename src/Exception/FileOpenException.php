@@ -1,6 +1,6 @@
 <?php
 
-namespace Happyhippyhippo\TextIO\Exception;
+namespace HappyHippyHippo\TextIO\Exception;
 
 use Throwable;
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace Happyhippyhippo\TextIO\tests;
+namespace HappyHippyHippo\TextIO\tests;
 
-use Happyhippyhippo\TextIO\Encode;
+use HappyHippyHippo\TextIO\Encode;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversDefaultClass \Happyhippyhippo\TextIO\Encode
+ * @coversDefaultClass \HappyHippyHippo\TextIO\Encode
  */
 class EncodeTest extends TestCase
 {
