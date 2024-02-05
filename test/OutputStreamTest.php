@@ -156,7 +156,13 @@ class OutputStreamTest extends TestCase
 
         $this->assertNotNull($stream);
         $this->assertEquals(Encode::UTF16BE, $stream->encoding());
-        $this->assertEquals(Encode::UTF16BE->bom() . Encode::UTF16BE->convert($content, Encode::UTF8), $file->getContent());
+        $this->assertEquals(
+            Encode::UTF16BE->bom() . Encode::UTF16BE->convert(
+                $content,
+                Encode::UTF8
+            ),
+            $file->getContent(),
+        );
     }
 
     /**
